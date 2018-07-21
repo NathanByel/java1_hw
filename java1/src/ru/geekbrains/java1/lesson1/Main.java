@@ -67,6 +67,10 @@ public class Main {
     // Написать метод вычисляющий выражение a * (b + (c / d)) и возвращающий результат,
     // где a, b, c, d – входные параметры этого метода;
     public static long calcFunc(int a, int b, int c, int d) {
+        if(d == 0) {
+            System.out.println("На ноль делить нельзя!");
+            return 0;
+        }
         return a * (b + (c / d));
     }
 
