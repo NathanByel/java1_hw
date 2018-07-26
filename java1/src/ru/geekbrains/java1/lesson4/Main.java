@@ -5,10 +5,10 @@ import java.util.Scanner;
 
 public class Main {
     // Настройки игры
-    private static final int MAP_SIZE         = 8;
-    private static final int WIN_LEN          = 4;
-    private static final int BOMBS            = 10;
-    private static final int EXTRA_TURNS      = 10;
+    private static final int MAP_SIZE         = 8;  // Размер карты
+    private static final int WIN_LEN          = 4;  // Элементов в ряд для выигрыша
+    private static final int BOMBS            = 10; // Количество ячеек в % с бомбами от общего размера карты
+    private static final int EXTRA_TURNS      = 10; // Количество ячеек в % с дополнительными ходами от общего размера карты
 
     // *****************************************************************************************************************
     private static final char X_ITEM          = 'X';
@@ -16,10 +16,10 @@ public class Main {
     private static final char EXTRA_TURN_ITEM = 'T';
     private static final char BOMB_ITEM       = 'B';
     private static final char EMPTY_ITEM      = '*';
-    private static final char WARN_ITEM       = 'W';
+    //private static final char WARN_ITEM       = 'W'; // Для отладки
 
     private static char gameMap[][];
-    private static char warnMap[][];
+    //private static char warnMap[][];    // Для отладки
     private static Random rand = new Random();
     private static Scanner scanner = new Scanner(System.in);
 
@@ -44,19 +44,21 @@ public class Main {
         }
 
         gameMap = new char[size][size];
-        warnMap = new char[size][size];
+        //warnMap = new char[size][size];
         int numExtraTurns = (int) ((float) (gameMap.length * gameMap.length) / 100F * (float) extraTurns);
         int numBombs = (int) ((float) (gameMap.length * gameMap.length) / 100F * (float) bombs);
         System.out.println("Размер карты        " + size + "x" + size);
+        System.out.println("Нужно собрать линию из " + winLineLen + " элементов для выигрыша.");
+        System.out.println();
+        System.out.println("Ячеек с бонусами:");
         System.out.println("Дополнительные ходы " + numExtraTurns);
         System.out.println("Бомбы               " + numBombs);
-        System.out.println();
 
         // Заполняем пустотой в виде "*"
         for (int y = 0; y < gameMap.length; y++) {
             for (int x = 0; x < gameMap.length; x++) {
                 gameMap[x][y] = EMPTY_ITEM;
-                warnMap[x][y] = EMPTY_ITEM;
+                //warnMap[x][y] = EMPTY_ITEM;
             }
         }
 
@@ -94,7 +96,7 @@ public class Main {
             System.out.print(y + 1 + "  " + (map.length > 9 && y < 9 ? " " : ""));
             for (int x = 0; x < map[y].length; x++) {
                 char item = map[x][y];
-                // We hide bombs and other extra stuff from player
+                // Скрываем бонусы от игрока
                 if (item != X_ITEM && item != O_ITEM && !openAll) {
                     item = EMPTY_ITEM;
                 }
@@ -177,13 +179,13 @@ public class Main {
 
                 //System.out.println("x11=" + x11 + ", y22=" + y22 + ", xx11=" + xx11 + ", yy22=" + yy22);
                 if (itemCnt >= winLen) {
-                    System.out.println("diagonal");
+                    //System.out.println("diagonal");
                     winDiagonals++;
                     itemCnt = 0;
                 }
 
                 if (itemCntR >= winLen) {
-                    System.out.println("diagonal R");
+                    //System.out.println("diagonal R");
                     winDiagonals++;
                     itemCntR = 0;
                 }
@@ -227,7 +229,7 @@ public class Main {
                     newWinCnt = checkWin(winLen, item);
                     gameMap[x][y] = oldItem;
                     if(newWinCnt > oldWinCnt) {
-                        warnMap[x][y] = WARN_ITEM;
+                        //warnMap[x][y] = WARN_ITEM;
                         coord[0] = x;
                         coord[1] = y;
                         return true;
@@ -242,7 +244,7 @@ public class Main {
     private static boolean playerTurn(int winLen) {
         int x, y;
         while(true) {
-            System.out.print("\nВаш ход(X Y): ");
+            System.out.print("\nВаш ход(X пробел Y): ");
             String answer[] = scanner.nextLine().split(" ");
             if (answer.length != 2) {
                 if (answer[0].toLowerCase().equals("end")) {
@@ -271,21 +273,21 @@ public class Main {
             switch(gameMap[x][y]) {
                 case EXTRA_TURN_ITEM:
                     gameMap[x][y] = X_ITEM;
-                    printMap(gameMap,false);
                     if( checkWin(winLen, X_ITEM) > 0 ) {
                         System.out.println("Поздравляем! Вы выиграли!");
                         return false;
                     }
+                    printMap(gameMap,false);
                     System.out.println("Поздравляем! Вы получаете бонус, дополнительный ход!");
                     break;
 
                 case EMPTY_ITEM:
                     gameMap[x][y] = X_ITEM;
-                    printMap(gameMap,false);
                     if( checkWin(winLen, X_ITEM) > 0) {
                         System.out.println("Поздравляем! Вы выиграли!");
                         return false;
                     }
+                    printMap(gameMap,false);
                     return true;
 
                 case BOMB_ITEM:
@@ -308,21 +310,20 @@ public class Main {
             int x = -1;
             int y = -1;
 
-            if( checkPossibleWin(coord, winLen, O_ITEM) ) { // Определяем, можем-ли мы выиграть
+            if( checkPossibleWin(coord, winLen, O_ITEM) ) {        // Определяем, можем-ли мы выиграть
                 x = coord[0];
                 y = coord[1];
-                System.out.println("AI WIN");
-            }
-            if( checkPossibleWin(coord, winLen, X_ITEM) ) { // Пытаемся блокировать ходы игрока
+                //System.out.println("AI WIN");
+            } else if( checkPossibleWin(coord, winLen, X_ITEM) ) { // Пытаемся блокировать ходы игрока
                 x = coord[0];
                 y = coord[1];
-                System.out.println("PLAYER BLOCK");
-            } else  {                                       // Ищем выигрышные комбинации для AI
+                //System.out.println("PLAYER BLOCK");
+            } else {                                               // Ищем выигрышные комбинации для AI
                 for(int i = winLen; i >= 2; i--) {
                     if( checkPossibleWin(coord, i, O_ITEM) ) {
                         x = coord[0];
                         y = coord[1];
-                        System.out.println("AI COMB: " + i);
+                        //System.out.println("AI COMB: " + i);
                         break;
                     }
                 }
@@ -332,30 +333,30 @@ public class Main {
             if( (x == -1) || (y == -1) ) {
                 x = rand.nextInt(gameMap.length);
                 y = rand.nextInt(gameMap.length);
-                System.out.println("AI RANDOM");
+                //System.out.println("AI RANDOM");
             }
-            
-            System.out.print("\nХод компьютера: ");
+
+            System.out.print("\nХод компьютера(X Y): ");
             System.out.println((x+1) + " " + (y+1));
 
             switch(gameMap[x][y]) {
                 case EXTRA_TURN_ITEM:
                     gameMap[x][y] = O_ITEM;
-                    printMap(gameMap,false);
                     if( checkWin(winLen, O_ITEM) > 0) {
                         System.out.println("Компьютер выиграл!");
                         return false;
                     }
+                    printMap(gameMap,false);
                     System.out.println("Компьютер получает бонус, дополнительный ход!");
                     break;
 
                 case EMPTY_ITEM:
                     gameMap[x][y] = O_ITEM;
-                    printMap(gameMap,false);
                     if( checkWin(winLen, O_ITEM) > 0) {
                         System.out.println("Компьютер выиграл!");
                         return false;
                     }
+                    printMap(gameMap,false);
                     return true;
 
                 case BOMB_ITEM:
@@ -372,11 +373,15 @@ public class Main {
 
     // *****************************************************************************************************************
     public static void main(String[] args) {
-        System.out.println("**************************************************************************");
+        System.out.println("***************************** Extra XO v1.0 ******************************");
+        System.out.println("Настройки игры задаются в начале класса Main.");
+        System.out.println();
         if( !makeMap(MAP_SIZE, WIN_LEN, BOMBS, EXTRA_TURNS) ) {
             System.out.println("Что-то пошло не так...");
             return;
         }
+        System.out.println("**************************************************************************");
+        System.out.println();
 
         printMap(gameMap,false);
         while(true) {
