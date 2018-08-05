@@ -45,7 +45,7 @@ public class NameGenerator {
 
     private Random rand = new Random();
 
-
+    // Public methods **************************************************************************************************
     public String getRandomName() {
         return names[rand.nextInt(names.length)];
     }

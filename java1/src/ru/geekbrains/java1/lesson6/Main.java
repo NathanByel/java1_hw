@@ -22,6 +22,7 @@ import ru.geekbrains.java1.lesson6.Animals.NameGenerator;
 import java.util.Random;
 
 public class Main {
+    // Получить случайное число с округлением до 1 знака после точки.
     private static double getRandomRound1(float min, float max) {
         return Math.round((min + Math.random() * (max-min)) * 10f) / 10f;
     }
@@ -37,11 +38,14 @@ public class Main {
             } else {
                 animals[i] = new Dog(nameGen.getRandomName(), 1 + rand.nextInt(19));
             }
+        }
 
-            animals[i].printInfo();
-            animals[i].run((float)getRandomRound1(100f, 800f));   // 100-800
-            animals[i].jump((float)getRandomRound1(0.1f, 3f));    // 0.1 - 3
-            animals[i].swim((float)getRandomRound1(5f, 15f));     // 5 - 15
+        // Пробегаемся по созданным животным. Можно было сделать и в предыдущем цикле, вынес для наглядности.
+        for(Animal animal: animals) {
+            animal.printInfo();
+            animal.run((float)getRandomRound1(100f, 800f));   // 100-800
+            animal.jump((float)getRandomRound1(0.1f, 3f));    // 0.1 - 3
+            animal.swim((float)getRandomRound1(5f, 15f));     // 5 - 15
             System.out.println();
         }
     }

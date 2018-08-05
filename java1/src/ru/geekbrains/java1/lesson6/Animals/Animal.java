@@ -1,99 +1,89 @@
 package ru.geekbrains.java1.lesson6.Animals;
 
-public class Animal {
-    private String  name;
-    private int     age;
-    private float   maxRun;
-    private float   maxJump;
-    private float   maxSwim;
+public abstract class Animal {
+    private String type;
+    private String name;
+    private int    age;
+    private float  maxRunDistance;
+    private float  maxJumpHeight;
+    private float  maxSwimDistance;
 
+    // Private methods *************************************************************************************************
     // Получить случайное число с округлением до 1 знака после точки.
     private double getRandomRound1(float min, float max) {
         return Math.round((min + Math.random() * (max-min)) * 10f) / 10f;
     }
 
-    private boolean checkAction(float value, float max){
-        if(value <= max) {
-            System.out.println("true");
-            return true;
-        } else {
-            System.out.println("false");
-            return false;
+    // Constructors ****************************************************************************************************
+    public Animal(String type, String name, int age, float maxRunDistance, float maxJumpHeight, float maxSwimDistance) {
+        if( (type == null) || (type.length() == 0) ) {
+            throw new IllegalArgumentException("Type can't be null or empty.");
         }
+
+        if( (name == null) || (name.length() == 0) ) {
+            throw new IllegalArgumentException("Name can't be null or empty.");
+        }
+
+        if(age < 1) {
+            throw new IllegalArgumentException("Age can't be less that one.");
+        }
+
+        this.type = type;
+        this.name = name;
+        this.age  = age;
+        this.maxRunDistance  = maxRunDistance;
+        this.maxJumpHeight   = maxJumpHeight;
+        this.maxSwimDistance = maxSwimDistance;
     }
 
-    public Animal(String name, int age, float maxRun, float maxJump, float maxSwim) {
-        this.name = name;
-        this.age = age;
-        this.maxRun = maxRun;
-        this.maxJump = maxJump;
-        this.maxSwim = maxSwim;
-    }
+    public Animal(String type, String name, int age, float maxRunDistance, float maxJumpHeight, float maxSwimDistance, int percent) {
+        this(type, name, age, maxRunDistance, maxJumpHeight, maxSwimDistance);
 
-    public Animal(String name, int age, float maxRun, float maxJump, float maxSwim, int percent) {
-        this.name = name;
-        this.age = age;
-        this.maxRun = maxRun;
-        this.maxJump = maxJump;
-        this.maxSwim = maxSwim;
-
-        float min, max;
         if (percent > 100) {
             percent = 100;
         }
 
-        min = this.maxRun - this.maxRun / 100 * percent;
-        max = this.maxRun + this.maxRun / 100 * percent;
-        this.maxRun = (float)this.getRandomRound1(min, max);
+        float min, max;
+        min = this.maxRunDistance - this.maxRunDistance / 100 * percent;
+        max = this.maxRunDistance + this.maxRunDistance / 100 * percent;
+        this.maxRunDistance = (float)this.getRandomRound1(min, max);
 
-        min = this.maxJump - this.maxJump / 100 * percent;
-        max = this.maxJump + this.maxJump / 100 * percent;
-        this.maxJump = (float)this.getRandomRound1(min, max);
+        min = this.maxJumpHeight - this.maxJumpHeight / 100 * percent;
+        max = this.maxJumpHeight + this.maxJumpHeight / 100 * percent;
+        this.maxJumpHeight = (float)this.getRandomRound1(min, max);
 
-        min = this.maxSwim - this.maxSwim / 100 * percent;
-        max = this.maxSwim + this.maxSwim / 100 * percent;
-        this.maxSwim = (float)this.getRandomRound1(min, max);
+        min = this.maxSwimDistance - this.maxSwimDistance / 100 * percent;
+        max = this.maxSwimDistance + this.maxSwimDistance / 100 * percent;
+        this.maxSwimDistance = (float)this.getRandomRound1(min, max);
     }
 
+    // Public methods **************************************************************************************************
     public void printInfo() {
         System.out.println(
-                "Имя:          " + this.name    + "\n" +
-                "Возраст:      " + this.age     + "\n" +
-                "Макс. бег:    " + this.maxRun  + "м\n" +
-                "Макс. прыжок: " + this.maxJump + "м\n" +
-                "Макс. заплыв: " + this.maxSwim + "м"
+                "Животное:     " + this.type            + "\n"  +
+                "Имя:          " + this.name            + "\n"  +
+                "Возраст:      " + this.age             + "\n"  +
+                "Макс. бег:    " + this.maxRunDistance  + "м\n" +
+                "Макс. прыжок: " + this.maxJumpHeight   + "м\n" +
+                "Макс. заплыв: " + this.maxSwimDistance + "м"
         );
     }
 
-    public boolean run(float distance){
-        System.out.print("-> Попытка бега на " + distance + "м: ");
-        return checkAction(distance, this.maxRun);
+    public boolean run(float distance) {
+        boolean result = (distance <= this.maxRunDistance);
+        System.out.println(this.type + ", " + this.name + " -> Попытка бега на " + distance + "м: " + result);
+        return result;
     }
 
     public boolean jump(float height) {
-        System.out.print("-> Попытка прыжка на " + height + "м: ");
-        return checkAction(height, this.maxJump);
+        boolean result = (height <= this.maxJumpHeight);
+        System.out.println(this.type + ", " + this.name + " -> Попытка прыжка на " + height + "м: " + result);
+        return result;
     }
 
     public boolean swim(float distance) {
-        System.out.print("-> Попытка заплыва на " + distance + "м: ");
-        return checkAction(distance, this.maxSwim);
-    }
-
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
+        boolean result = (distance <= this.maxSwimDistance);
+        System.out.println(this.type + ", " + this.name + " -> Попытка заплыва на " + distance + "м: " + result);
+        return result;
     }
 }
