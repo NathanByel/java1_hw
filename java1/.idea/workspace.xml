@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1d7c7689-56bd-4b18-8420-21512aa7d6ac" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ru/geekbrains/java1/lesson6/Animals/NameGenerator.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ru/geekbrains/java1/lesson7/Cat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ru/geekbrains/java1/lesson7/Cat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ru/geekbrains/java1/lesson7/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ru/geekbrains/java1/lesson7/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ru/geekbrains/java1/lesson7/Plate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ru/geekbrains/java1/lesson7/Plate.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -46,11 +47,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/ru/geekbrains/java1/lesson7/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="92">
-              <caret line="31" column="30" lean-forward="true" selection-start-line="31" selection-start-column="30" selection-end-line="31" selection-end-column="30" />
+            <state relative-caret-position="310">
+              <caret line="46" selection-start-line="46" selection-end-line="46" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -61,21 +62,17 @@
       <file leaf-file-name="Cat.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ru/geekbrains/java1/lesson7/Cat.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="561">
-              <caret line="33" column="37" selection-start-line="33" selection-start-column="37" selection-end-line="33" selection-end-column="37" />
-              <folding>
-                <element signature="e#667#668#0" expanded="true" />
-                <element signature="e#700#701#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="293">
+              <caret line="61" column="33" lean-forward="true" selection-start-line="61" selection-start-column="33" selection-end-line="61" selection-end-column="33" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Plate.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Plate.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ru/geekbrains/java1/lesson7/Plate.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5">
-              <caret line="2" column="20" lean-forward="true" selection-start-line="2" selection-start-column="20" selection-end-line="2" selection-end-column="20" />
+            <state relative-caret-position="-241">
+              <caret line="36" column="42" lean-forward="true" selection-start-line="36" selection-start-column="42" selection-end-line="36" selection-end-column="42" />
               <folding>
                 <element signature="e#555#556#0" expanded="true" />
                 <element signature="e#587#588#0" expanded="true" />
@@ -114,9 +111,9 @@
         <option value="$PROJECT_DIR$/src/ru/geekbrains/java1/lesson7/NameGenerator.java" />
         <option value="$PROJECT_DIR$/src/ru/geekbrains/java1/lesson7/Animals/Cat.java" />
         <option value="$PROJECT_DIR$/src/ru/geekbrains/java1/lesson6/Main.java" />
-        <option value="$PROJECT_DIR$/src/ru/geekbrains/java1/lesson7/Main.java" />
         <option value="$PROJECT_DIR$/src/ru/geekbrains/java1/lesson7/Plate.java" />
         <option value="$PROJECT_DIR$/src/ru/geekbrains/java1/lesson7/Cat.java" />
+        <option value="$PROJECT_DIR$/src/ru/geekbrains/java1/lesson7/Main.java" />
       </list>
     </option>
   </component>
@@ -337,7 +334,7 @@
       <window_info anchor="right" id="Capture Analysis" order="4" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5012225" side_tool="true" weight="0.36394176" />
       <window_info anchor="right" id="Maven Projects" order="7" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4987775" visible="true" weight="0.65555555" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4987775" weight="0.2920635" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.3295838" />
       <window_info id="Capture Tool" order="5" />
@@ -530,34 +527,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/geekbrains/java1/lesson7/Main.java">
+    <entry file="file://$PROJECT_DIR$/src/ru/geekbrains/java1/lesson7/Plate.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="92">
-          <caret line="31" column="30" lean-forward="true" selection-start-line="31" selection-start-column="30" selection-end-line="31" selection-end-column="30" />
+        <state relative-caret-position="-241">
+          <caret line="36" column="42" lean-forward="true" selection-start-line="36" selection-start-column="42" selection-end-line="36" selection-end-column="42" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#555#556#0" expanded="true" />
+            <element signature="e#587#588#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ru/geekbrains/java1/lesson7/Cat.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="561">
-          <caret line="33" column="37" selection-start-line="33" selection-start-column="37" selection-end-line="33" selection-end-column="37" />
-          <folding>
-            <element signature="e#667#668#0" expanded="true" />
-            <element signature="e#700#701#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="293">
+          <caret line="61" column="33" lean-forward="true" selection-start-line="61" selection-start-column="33" selection-end-line="61" selection-end-column="33" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/geekbrains/java1/lesson7/Plate.java">
+    <entry file="file://$PROJECT_DIR$/src/ru/geekbrains/java1/lesson7/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5">
-          <caret line="2" column="20" lean-forward="true" selection-start-line="2" selection-start-column="20" selection-end-line="2" selection-end-column="20" />
+        <state relative-caret-position="310">
+          <caret line="46" selection-start-line="46" selection-end-line="46" />
           <folding>
-            <element signature="e#555#556#0" expanded="true" />
-            <element signature="e#587#588#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -17,16 +17,24 @@ import java.util.Random;
     6. Добавить в тарелку метод, с помощью которого можно было бы добавлять еду в тарелку
 */
 public class Main {
+    /*
+        Сделал такую штуку;
+        Создается тарелка с едой, тарелка может сама пополняться, если она не полная.
+        Потом создаются коты, у которых со временем уменьшается "сытость", как только какой-то кот проголодался,
+        он пытается поесть из тарелки.
+    */
     public static void main(String[] args) {
         Random rand = new Random();
         NameGenerator nameGen = new NameGenerator();
 
+        // Тарелка с автопополнением еды.
         Plate plate = new Plate(
                 100,
                 100,
-                20,
+                10,
                 true );
 
+        // Создаем котов с разным размером желудка и разной скоростью переваривания...
         Cat cats[] = new Cat[3];
         for(int i = 0; i < cats.length; i++) {
             cats[i] = new Cat(
@@ -35,6 +43,7 @@ public class Main {
                     1 + rand.nextInt(5),
                     plate );
         }
+
 
         while(true) {
             plate.update();

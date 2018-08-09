@@ -7,18 +7,25 @@ public class Plate {
     private boolean autoAdd;
     private long timer = 0;
 
-    public Plate(int maxFood, int foodNum, int addFoodSpeed, boolean autoAdd) {
-        checkInValueFood(foodNum);
-        this.maxFood = maxFood;
-        this.food = foodNum;
-        this.addFoodSpeed = addFoodSpeed;
-        this.autoAdd = autoAdd;
-    }
-
     private void checkInValueFood(int food) {
         if(food < 0) {
             throw new IllegalArgumentException("Food can't be < 0");
         }
+    }
+
+    public Plate(int maxFood, int foodNum, int addFoodSpeed, boolean autoAdd) {
+        checkInValueFood(foodNum);
+        if(maxFood <= 0) {
+            throw new IllegalArgumentException("maxFood can't be <= 0");
+        }
+
+        if(addFoodSpeed <= 0) {
+            throw new IllegalArgumentException("addFoodSpeed can't be <= 0");
+        }
+        this.maxFood = maxFood;
+        this.food = foodNum;
+        this.addFoodSpeed = addFoodSpeed;
+        this.autoAdd = autoAdd;
     }
 
     public void addFood(int foodNum) {

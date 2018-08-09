@@ -10,6 +10,17 @@ public class Cat {
 
     public Cat(String name, int maxFullness, int hungerSpeed)
     {
+        if( (name == null) || (name.length() == 0) ) {
+            throw new IllegalArgumentException("name can't be null or empty");
+        }
+
+        if(maxFullness <= 0) {
+            throw new IllegalArgumentException("maxFullness can't be <= 0");
+        }
+
+        if(hungerSpeed <= 0) {
+            throw new IllegalArgumentException("hungerSpeed can't be <= 0");
+        }
         this.name = name;
         this.maxFullness = maxFullness;
         this.hungerSpeed = hungerSpeed;
@@ -18,10 +29,9 @@ public class Cat {
     public Cat(String name, int maxFullness, int hungerSpeed, Plate plate)
     {
         this(name, maxFullness, hungerSpeed);
-        this.plate = plate;
-    }
-
-    public void setPlate(Plate plate) {
+        if( (plate == null) || !plate.getClass().getSimpleName().equals("Plate") ) {
+            throw new IllegalArgumentException("plate can't be null and plate must have \"Plate\" class");
+        }
         this.plate = plate;
     }
 
